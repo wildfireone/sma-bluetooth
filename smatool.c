@@ -908,6 +908,10 @@ int auto_set_dates( ConfType * conf, FlagType * flag )
     if( flag->mysql == 1 )
     {
         OpenMySqlDatabase( conf->MySqlHost, conf->MySqlUser, conf->MySqlPwd, conf->MySqlDatabase);
+        // Gor - Remove illegal values first!
+        sprintf(SQLQUERY,"DELETE FROM DayData WHERE CurrentPower < 0 or ETotalToday = 9999999.999" );
+        if (debug == 1) printf("%s\n",SQLQUERY);
+        DoQuery(SQLQUERY);
         //Get last updated value
         sprintf(SQLQUERY,"SELECT DATE_FORMAT( DateTime, \"%%Y-%%m-%%d %%H:%%i:%%S\" ) FROM DayData WHERE 1 ORDER BY DateTime DESC LIMIT 1" );
         if (flag->debug == 1) printf("%s\n",SQLQUERY);
