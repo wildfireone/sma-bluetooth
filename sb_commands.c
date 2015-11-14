@@ -799,8 +799,8 @@ int ProcessCommand( ConfType * conf, FlagType * flag, UnitType **unit, int *s, F
 	                                    printf("\n%d/%d/%4d %02d:%02d:%02d  total=%.3f Kwh current=%.0f Watts togo=%d i=%d crc=%d", day, month, year, hour, minute,second, gtotal/1000, (gtotal-ptotal)*12, togo, i, crc_at_end);
 					    if( idate != prev_idate+300 ) {
                                                 printf( "Date Error! prev=%d current=%d\n", (int)prev_idate, (int)idate );
-                                                error=1;
-					        break;
+                                                //error=1;
+					        //break;
                                             }
                                             if( (*archdatalen) == 0 )
                                                 (*archdatalist) = ( ArchDataType *)malloc( sizeof( ArchDataType ) );
